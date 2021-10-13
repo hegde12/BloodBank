@@ -23,11 +23,11 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping(path="/api/v1/donor")
+@RequestMapping(path="/api/v1/donorinfo")
 public class DonorController {
 	@Autowired
 	private WebClient.Builder client;
-	
+	@Autowired
 	private DonorService service;
 	
 	
@@ -45,7 +45,7 @@ public class DonorController {
 	public ResponseEntity<Donor> addDonor(@RequestBody Donor d){
 		return new ResponseEntity<Donor>(service.addDonor(d),HttpStatus.CREATED);
 	}
-	@GetMapping
+	@GetMapping(path="/")
 	public List<Donor> getAll(){
 		return service.getAll();
 	}
@@ -55,8 +55,8 @@ public class DonorController {
 		return service.searchBycode(n);
 	}
 	
-	@DeleteMapping(path="/delete/{id}")
-	public ResponseEntity<String> delete(@PathVariable("id") int n){
+	@DeleteMapping(path="/delete/{donorId}")
+	public ResponseEntity<String> delete(@PathVariable("donorId") int n){
 		int count =  service.delete(n);
 		HttpStatus status = HttpStatus.NOT_FOUND;
 		String message="Record Not Found";
@@ -69,8 +69,8 @@ public class DonorController {
 		return ResponseEntity.status(status).body(message);
 	}
 	
-	@PutMapping(path="/update/{id}")
-	public ResponseEntity<Donor> update(@RequestBody Donor d, @PathVariable("id") int n){
+	@PutMapping(path="/update/{donorId}")
+	public ResponseEntity<Donor> update(@RequestBody Donor d, @PathVariable("donorId") int n){
 
 		return new ResponseEntity<Donor>(service.update(d,n),HttpStatus.OK);
 	}

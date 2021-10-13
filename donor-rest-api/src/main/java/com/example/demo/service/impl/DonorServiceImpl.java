@@ -2,6 +2,7 @@ package com.example.demo.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.Donor;
@@ -10,7 +11,7 @@ import com.example.demo.service.DonorService;
 
 @Service
 public class DonorServiceImpl implements DonorService{
-	
+	@Autowired
 	private DonorRepository repo;
 	
 
@@ -58,7 +59,7 @@ public class DonorServiceImpl implements DonorService{
 	@Override
 	public Donor update(Donor d,int x) {
 		// TODO Auto-generated method stub
-		Donor existing=repo.findByid(x);
+		Donor existing=(Donor) repo.findByDonorId(x);
 		existing.setDonorId(d.getDonorId());
 		existing.setDonorName(d.getDonorName());
 		existing.setBloodgroup(d.getBloodgroup());

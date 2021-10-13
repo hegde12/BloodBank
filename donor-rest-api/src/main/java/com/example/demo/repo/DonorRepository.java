@@ -15,13 +15,13 @@ import com.example.demo.entity.Donor;
 @Repository
 public interface DonorRepository extends JpaRepository<Donor, Integer> {
 
-	public List<Donor> findAllById(int n);
+	public List<Donor> findAllByDonorId(int n);
 	public List<Donor> findBybloodgroup(String s);
 //	@Query(nativeQuery = true,value = "update donor set bloodgroup =:group where id =:id")
 //	@Modifying
 //	@Transactional
 //	public int updateBlood(@Param("id")int id,@Param("bloodgroup")String blood);
 	public List<Donor> findByareacode(int n);
-	public Donor findByid(int x);
+	public List<Donor> findByDonorId(int x);
 
 }

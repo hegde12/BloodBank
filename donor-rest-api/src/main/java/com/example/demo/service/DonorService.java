@@ -10,7 +10,7 @@ public interface DonorService {
 	List<Donor> getAll();
 	List<Donor> searchBycode(int n);
 	int delete(int n);
-	Donor update(Donor d,int id);
+	Donor update(Donor d,int donorId);
 	List<Donor> searchBygroup(String s);
 
 }
