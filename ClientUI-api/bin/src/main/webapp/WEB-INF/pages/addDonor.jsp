@@ -37,7 +37,7 @@
         
         
         <div>
-           <input type = "submit" value = "Register !">
+            <input type = "submit" value = "Register !">
         </div>
 </form:form>
 </div>
@@ -47,4 +47,3 @@
 
 </body>
 </html>
-    

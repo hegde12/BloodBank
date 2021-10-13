@@ -59,11 +59,11 @@ public class DonorServiceImpl implements DonorService{
 	public Donor update(Donor d,int x) {
 		// TODO Auto-generated method stub
 		Donor existing=repo.findByid(x);
-		existing.setId(d.getId());
-		existing.setDonorname(d.getDonorname());
+		existing.setDonorId(d.getDonorId());
+		existing.setDonorName(d.getDonorName());
 		existing.setBloodgroup(d.getBloodgroup());
 		existing.setAreacode(d.getAreacode());
-		existing.setAge(d.getAge());
+		existing.setDonorAge(d.getDonorAge());
 		repo.save(existing);
 		return existing;
 

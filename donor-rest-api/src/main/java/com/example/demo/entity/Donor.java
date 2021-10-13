@@ -17,22 +17,22 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name="donor")
+@Table(name="donorinfo")
 @NoArgsConstructor
 @AllArgsConstructor
 
 public class Donor {
 
 	@Id
-	@Column(name="id")
-	int id;
+	@Column(name="donorId")
+	int donorId;
 	
 
-	@Column(name="donorname")
-	String donorname;
+	@Column(name="donorName")
+	String donorName;
 	
-	@Column(name="age")
-	int age;
+	@Column(name="donorAge")
+	int donorAge;
 	
 	@Column(name="bloodgroup")
 	String bloodgroup;

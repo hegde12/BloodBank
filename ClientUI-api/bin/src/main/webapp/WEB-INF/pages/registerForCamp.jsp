@@ -8,12 +8,12 @@
 <title>Donor Registration Form</title>
 </head>
 <body>
-<header>Donate and Save Lives !</header>
+<header>Register For Donotion Camp !</header>
 <div>
-<form:form action="/addDonor" modelAttribute="command" method="post"  >
+<form:form action="/campRegister" modelAttribute="command2" method="post"  >
         <div>
-            <label for="">Donor ID</label>
-            <form:input path="id"/>
+            <label for="">DonorCamp ID</label>
+            <form:input path="campname"/>
         </div>
         
         <div>
@@ -22,12 +22,8 @@
         </div>
         
         <div>
-            <label for="">Donor Age</label>
-            <form:input path="age"/>
-        </div>
-        <div>
-        <label for="">Blood Group</label>
-        <form:input path="bloodgroup"/>
+            <label for="">Donorcamp Address</label>
+            <form:input path="address"/>
         </div>
         
         <div>
@@ -35,16 +31,11 @@
         <form:input path="areacode"/>
         </div>
         
-        
         <div>
-           <input type = "submit" value = "Register !">
+            <input type = "submit" value = "Register !">
         </div>
 </form:form>
 </div>
 
-
-
-
 </body>
 </html>
-    

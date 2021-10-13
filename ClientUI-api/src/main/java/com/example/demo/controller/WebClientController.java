@@ -67,7 +67,7 @@ public class WebClientController {
 	
 	//Half implemented update method.
 //	@GetMapping(path="/update")
-//	public String updateData(Model model,@RequestParam("search") int id ) {
+//	public (Model model,@RequestParam("search") int id ) {
 //		model.addAttribute("command",service.getDonorByid(id));
 //		return "addDonor";
 //	}
