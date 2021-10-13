@@ -48,12 +48,12 @@ public class WebClientController {
 	
 	@RequestMapping(value="/",method=RequestMethod.GET)
 	public String init(Model model) {
-		 model.addAttribute("majHeading","ABC BloodBank");
+		 model.addAttribute("majHeading","MY BLOOD BANK");
 		 return "index";
 	}
 	@GetMapping(path="/alreadyRegistered")
 	public String alreadyregistered(Model model) {
-		model.addAttribute("majHeading","Welcome Back Donor");
+		model.addAttribute("majHeading","Welcome Again Donor");
 		return "alreadyRegistered";
 	}
 	
@@ -86,7 +86,7 @@ public class WebClientController {
         	headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         	headers.setContentType(MediaType.APPLICATION_JSON);
         	HttpEntity<Donor> requestBody=new HttpEntity<>(donor,headers);
-        	template.postForObject("http://localhost:7000/api/v1/donor",requestBody, Donor[].class);
+        	template.postForObject("http://localhost:4646/api/v1/donor",requestBody, Donor[].class);
         }
         return "redirect:/getAllDonor";
     }
@@ -95,7 +95,7 @@ public class WebClientController {
 	@GetMapping(path = "/getAllDonor")
 	public String findAll(Model model) {
 
-	Donor[] resp =template.getForObject("http://localhost:7000/api/v1/donor",
+	Donor[] resp =template.getForObject("http://localhost:4646/api/v1/donorinfo",
 	Donor[].class);
 
 	model.addAttribute("data",resp);
@@ -109,7 +109,7 @@ public class WebClientController {
 	public String searchBybloodgroup(Model model,@RequestParam("search") String bloodgroup) {
 //		System.out.println(bloodgroup);
 
-	Donor[] resp =template.getForObject("http://localhost:7000/api/v1/donor/"+bloodgroup,
+	Donor[] resp =template.getForObject("http://localhost:4646/api/v1/donorinfo/"+bloodgroup,
 	Donor[].class);
 
 	model.addAttribute("donors",resp);
@@ -122,7 +122,7 @@ public class WebClientController {
 	public String searchByareacode(Model model,@RequestParam("search") int  areacode) {
 
 
-	Donor[] resp =template.getForObject("http://localhost:7000/api/v1/donor/srch/"+areacode,
+	Donor[] resp =template.getForObject("http://localhost:4646/api/v1/donorinfo/srch/"+areacode,
 	Donor[].class);
 
 	model.addAttribute("data",resp);
@@ -133,7 +133,7 @@ public class WebClientController {
 	//Deleting donor record by ID
 	@DeleteMapping(path="/delete")
 	public String deleteRecord(Model model,@RequestParam("search") int id) {
-		template.delete("http://localhost:7000/api/v1/donor/delete/"+id);
+		template.delete("http://localhost:4646/api/v1/donorinfo/delete/"+id);
 		return "successfull";
 	}
 	
@@ -141,7 +141,7 @@ public class WebClientController {
 	@GetMapping(path = "/searchBycamp")
 	public String searchBycamp(Model model,@RequestParam("search") int  campname) {
 
-	DonorCamp[] resp =template.getForObject("http://localhost:7010/api/v1/donorcamp/srchbycampname/"+campname,
+	DonorCamp[] resp =template.getForObject("http://localhost:4747/api/v1/donorcamp/srchbycampname/"+campname,
 	DonorCamp[].class);
 
 	model.addAttribute("data2",resp);
@@ -152,7 +152,7 @@ public class WebClientController {
 	@GetMapping(path = "/searchCampsByArea")
 	public String searchCampByAreaCode(Model model,@RequestParam("search") int  areacode) {
 
-	DonorCamp[] resp =template.getForObject("http://localhost:7010/api/v1/donorcamp/srchbyareacode/"+areacode,
+	DonorCamp[] resp =template.getForObject("http://localhost:4747/api/v1/donorcamp/srchbyareacode/"+areacode,
 	DonorCamp[].class);
 
 	model.addAttribute("data",resp);
@@ -178,7 +178,7 @@ public class WebClientController {
         	headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         	headers.setContentType(MediaType.APPLICATION_JSON);
         	HttpEntity<DonorCamp> requestBody=new HttpEntity<>(donorcamp,headers);
-        	template.postForObject("http://localhost:7010/api/v1/donorcamp",requestBody, DonorCamp[].class);
+        	template.postForObject("http://localhost:4747/api/v1/donorcamp",requestBody, DonorCamp[].class);
         }
         return "successfull";
     }
@@ -187,7 +187,7 @@ public class WebClientController {
 	@GetMapping(path = "/getAllDonorCamps")
 	public String findAllDonorCamps(Model model) {
 
-	DonorCamp[] resp =template.getForObject("http://localhost:7010/api/v1/donorcamp",
+	DonorCamp[] resp =template.getForObject("http://localhost:4747/api/v1/donorcamp",
 	DonorCamp[].class);
 
 	model.addAttribute("data",resp);
